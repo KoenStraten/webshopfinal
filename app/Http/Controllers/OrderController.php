@@ -27,7 +27,7 @@ class OrderController extends Controller
             ->join('users', 'users.id', '=', 'shopping_carts.user_id')
             ->leftJoin('product_in_shopping_cart', 'shopping_carts.id', '=', 'product_in_shopping_cart.shopping_cart_id')
             ->groupBy('shopping_carts.id', 'users.name', 'shopping_carts.total_cost', 'shopping_carts.paid')
-            ->orderBy('users.name')->get();
+            ->orderBy('shopping_carts.id')->get();
 
         return view('pages.admin.orders.index', compact('orders'));
     }
@@ -100,12 +100,39 @@ class OrderController extends Controller
         return back();
     }
 
-    public function store()
-    {
+    public function store() {
+        $this->validate(request(), [
+            'products' => 'required',
+            'cheeseTypes' => 'required',
+            'amount' => 'required'
+        ]);
+
         $shoppingCart = new ShoppingCart();
         $shoppingCart->user_id = request('user');
         $shoppingCart->paid = request('paid');
         $shoppingCart->total_cost = 0;
+        $shoppingCart->save();
+
+        $products = request('products');
+        $cheeseTypes = request('cheeseTypes');
+        $amounts = request('amount');
+
+        $totalCost = 0;
+
+        for($i = 0; $i < count($products); $i++) {
+            if (isset($amounts[$i])) {
+                for ($j = 0; $j < $amounts[$i]; $j++) {
+                    $totalCost = $totalCost + Product::find($products[$i])->price;
+                    $pic = new ProductInCart();
+                    $pic->product_id = $products[$i];
+                    $pic->shopping_cart_id = $shoppingCart->id;
+                    $pic->cheese_type = $cheeseTypes[$i];
+                    $pic->save();
+                }
+            }
+        }
+
+        $shoppingCart->total_cost = $totalCost;
         $shoppingCart->save();
 
         return redirect('/../admin/orders');
