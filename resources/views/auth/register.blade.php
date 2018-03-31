@@ -8,7 +8,7 @@
                 <div class="card-header">Registreren</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/../register/">
+                    <form method="POST" action="/../register">
                         @csrf
 
                         <div class="form-group row">
