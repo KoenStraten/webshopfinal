@@ -28,7 +28,6 @@ Route::get('/categoryoverview/', 'CategoryController@index')->name('categories')
 
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
-
 Route::post('/shoppingcart/removeAll', 'ShoppingCartController@removeAll');
 Route::post('/shoppingcart/empty/', 'ShoppingCartController@emptyCart');
 Route::get('/shoppingcart/edit/{product}', 'ShoppingCartController@edit');
@@ -67,6 +66,13 @@ Route::get('/admin/categories/edit/{category}', 'CategoryController@edit');
 Route::post('/admin/categories/edit', 'CategoryController@update');
 Route::post('/admin/categories/store', 'CategoryController@store');
 Route::post('/admin/categories/remove/{category}', 'CategoryController@remove');
+
+Route::get('/admin/orders', 'OrderController@index');
+Route::get('/admin/orders/create', 'OrderController@create');
+Route::get('/admin/orders/edit/{category}', 'OrderController@edit');
+Route::post('/admin/orders/edit', 'OrderController@update');
+Route::post('/admin/orders/store', 'OrderController@store');
+Route::post('/admin/orders/remove/{category}', 'OrderController@remove');
 
 /*Pages without controllers*/
 Route::get('/about', function () {
