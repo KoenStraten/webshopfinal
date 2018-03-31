@@ -9,7 +9,7 @@
                 <div class="card w-100">
                     <div class="card-header">Uw bestelling wordt bezorgd op {{ $deliveryDay }}</div>
                     <div class="card-body">
-                        <form method="POST" action="/../shoppingcart/empty/">
+                        <form method="POST" action="/../shoppingcart/empty">
                             {{ csrf_field() }}
                             <div class="form-group row">
                                 <h5 class="col-md-3">Naam</h5>
