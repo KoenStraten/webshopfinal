@@ -69,7 +69,7 @@ Route::post('/admin/categories/remove/{category}', 'CategoryController@remove');
 
 Route::get('/admin/orders', 'OrderController@index');
 Route::get('/admin/orders/create', 'OrderController@create');
-Route::get('/admin/orders/edit/{category}', 'OrderController@edit');
+Route::get('/admin/orders/edit/{order}', 'OrderController@edit');
 Route::post('/admin/orders/edit', 'OrderController@update');
 Route::post('/admin/orders/store', 'OrderController@store');
 Route::post('/admin/orders/remove/{category}', 'OrderController@remove');
