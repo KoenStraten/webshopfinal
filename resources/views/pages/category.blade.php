@@ -1,7 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
     {{ Breadcrumbs::render('category', $category) }}
-
     <div class="container">
         <h3 class="pt-3">{{ $category }}</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">

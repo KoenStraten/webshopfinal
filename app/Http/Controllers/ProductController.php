@@ -66,6 +66,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|min:20',
             'category' => 'required',
+            'image' => 'required',
         ]);
 
         $path = $request->file('image')->store('public');
