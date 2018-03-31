@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 //Authentication
 Route::get('/register', 'RegistrationController@create');
-Route::post('/register/', 'RegistrationController@store');
+Route::post('/register', 'RegistrationController@store');
 Route::get('/login', 'SessionController@create');
 Route::post('/login', 'SessionController@store');
 Route::post('/logout', 'SessionController@destroy');
@@ -24,13 +24,13 @@ Route::post('/logout', 'SessionController@destroy');
 Route::get('/product/{product}', 'HomeController@show')->name('product');
 
 Route::get('/category/{category}', 'CategoryController@show')->name('category');
-Route::get('/categoryoverview/', 'CategoryController@index')->name('categories');
+Route::get('/categoryoverview', 'CategoryController@index')->name('categories');
 
 Route::post('/shoppingcart/store', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 
 Route::post('/shoppingcart/removeAll', 'ShoppingCartController@removeAll');
-Route::post('/shoppingcart/empty/', 'ShoppingCartController@emptyCart');
+Route::post('/shoppingcart/empty', 'ShoppingCartController@emptyCart');
 Route::get('/shoppingcart/edit/{product}', 'ShoppingCartController@edit');
 Route::post('/shoppingcart/edit', 'ShoppingCartController@update');
 Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('shoppingCartPurchase');

@@ -35,7 +35,7 @@
                                         <p class="price">{{ "$" . $product->price }}</p>
                                         <a href="../product/{{ $product->id }}" class="btn btn-warning">To product page ></a>
                                         @if(\Illuminate\Support\Facades\Auth::check())
-                                            <form class="pt-3" method="POST" action="../shoppingcart/store/">
+                                            <form class="pt-3" method="POST" action="../shoppingcart/store">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="product" value="{{ $product->id }}">
                                                 <button type="submit" class="btn btn-block btn-warning"><i
