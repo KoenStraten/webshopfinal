@@ -26,7 +26,7 @@ Route::get('/product/{product}', 'HomeController@show')->name('product');
 Route::get('/category/{category}', 'CategoryController@show')->name('category');
 Route::get('/categoryoverview/', 'CategoryController@index')->name('categories');
 
-Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
+Route::post('/shoppingcart/store', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 Route::post('/shoppingcart/removeAll', 'ShoppingCartController@removeAll');
 Route::post('/shoppingcart/empty/', 'ShoppingCartController@emptyCart');

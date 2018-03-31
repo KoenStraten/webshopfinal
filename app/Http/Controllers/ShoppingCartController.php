@@ -90,7 +90,7 @@ class ShoppingCartController extends Controller
             session()->put('cart', $cart);
 
             session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
-            return view('pages/shoppingcart/shoppingcart');
+            return back();
         }
     }
 
