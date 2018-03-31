@@ -72,7 +72,7 @@ Route::get('/admin/orders/create', 'OrderController@create');
 Route::get('/admin/orders/edit/{order}', 'OrderController@edit');
 Route::get('/admin/orders/edit/{order}/{product}', 'OrderController@updateProduct');
 Route::get('/admin/orders/remove/{order}/{product}', 'OrderController@removeProduct');
-Route::post('/admin/orders/save/{order}', 'OrderController@update');
+Route::post('/admin/orders/update/{order}', 'OrderController@update');
 Route::post('/admin/orders/goback', 'OrderController@goBack');
 Route::post('/admin/orders/edit', 'OrderController@update');
 Route::post('/admin/orders/store', 'OrderController@store');
