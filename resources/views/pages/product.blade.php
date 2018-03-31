@@ -33,26 +33,26 @@
                         </div>
 
                         {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
-                            {{--<form method="POST" action="../shoppingcart/store/">--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<label>Cheese type</label>--}}
-                                    {{--<select name="cheeseType" class="form-control">--}}
-                                        {{--@foreach($cheeseTypes as $cheeseType)--}}
-                                            {{--<option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>--}}
-                                        {{--@endforeach--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
+                            <form method="POST" action="../shoppingcart/store/">
+                                <div class="form-group">
+                                    <label>Cheese type</label>
+                                    <select name="cheeseType" class="form-control">
+                                        @foreach($cheeseTypes as $cheeseType)
+                                            <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                {{--<div class="form-group">--}}
-                                    {{--{{ csrf_field() }}--}}
-                                    {{--<label>Amount</label>--}}
-                                    {{--<input name="amount" id="amount" type="number" value="1" class="form-control">--}}
-                                {{--</div>--}}
-                                {{--<input type="hidden" name="product" value="{{ $product->id }}">--}}
-                                {{--<button type="submit" class="btn btn-block btn-warning"><i class="fas fa-plus"></i> In--}}
-                                    {{--winkelwagen--}}
-                                {{--</button>--}}
-                            {{--</form>--}}
+                                <div class="form-group">
+                                    {{ csrf_field() }}
+                                    <label>Amount</label>
+                                    <input name="amount" id="amount" type="number" value="1" class="form-control">
+                                </div>
+                                <input type="hidden" name="product" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-block btn-warning"><i class="fas fa-plus"></i> In
+                                    winkelwagen
+                                </button>
+                            </form>
                         {{--@else
                             <button disabled class="btn btn-block btn-warning">Log in</button>
                         @endif--}}
