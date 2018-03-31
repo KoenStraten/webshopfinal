@@ -6,29 +6,41 @@
             @include('layouts.sidenav')
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Categorieën</h1>
-                    <a role="button" class="btn btn-primary float-right" href="/../admin/categories/create"><span data-feather="plus"></span></a>
+                    <h1 class="h2">Orders</h1>
+                    <a role="button" class="btn btn-primary float-right" href="/../admin/orders/create"><span data-feather="plus"></span></a>
                 </div>
 
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
-                            <th>Categorie</th>
+                            <th>#</th>
+                            <th>Gebruiker</th>
+                            <th>Totaal prijs</th>
+                            <th>Betaald</th>
+                            <th>producten</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
+                        @foreach($orders as $order)
                             <tr>
-                                <td>{{ $category->category }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $order->username }}</td>
+                                <td>{{ $order->total_cost }}</td>
+                                @if ($order->paid)
+                                    <td>ja</td>
+                                @else
+                                    <td>nee</td>
+                                @endif
+                                <td>{{ $order->amountOfProducts }}</td>
                                 <td>
-                                    <form method="get" action="/../admin/categories/edit/{{ $category->category }}">
+                                    <form method="get" action="/../admin/orders/edit/{{ $order->id }}">
                                         <button class="btn btn-outline-info btn-sm" type="submit"><span
                                                     data-feather="edit"></span></button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="post" action="/../admin/categories/remove/{{ $category->category }}">
+                                    <form method="post" action="/../admin/orders/remove/{{ $order->id }}">
                                         {{ csrf_field() }}
                                         <button class="btn btn-outline-danger btn-sm" type="submit"><span
                                                     data-feather="trash-2"></span></button>
