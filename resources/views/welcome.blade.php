@@ -74,15 +74,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
-                                    <p>{{ $p->description  }} <br><br>
-                                        @for($i = 0; $i < 5; $i++)
-                                            @if($i < $p->rating())
-                                                <span class="fa fa-star checked"></span>
-                                            @else
-                                                <span class="fa fa-star unchecked"></span>
-                                            @endif
-                                        @endfor
-                                        <span class="card-text">{{ " ( " . count($p->reviews) . " )" }}</span>
+                                    <p>{{ $p->description  }}</p> <br><br>
+                                    @for($i = 0; $i < 5; $i++)
+                                        @if($i < $p->rating())
+                                            <span class="fa fa-star checked"></span>
+                                        @else
+                                            <span class="fa fa-star unchecked"></span>
+                                        @endif
+                                    @endfor
+                                    <span class="card-text">{{ " ( " . count($p->reviews) . " )" }}</span>
                                 </div>
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
