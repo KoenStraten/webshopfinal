@@ -5,31 +5,33 @@
         <div class="row">
             @include('layouts.sidenav')
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
-                <p>{{ $order }}</p>
-                <p>{{ $user }}</p>
+                <h3>Order #{{ $order->id }} van {{ $user->name }}</h3>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th>Product</th>
                             <th>Smaak</th>
+                            <th>Prijs</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
+                        @foreach($productsInCart as $productInCart)
                             <tr>
                                 {{--<td>{{ $loop->iteration }}</td>--}}
-                                <td>{{ $product->name }}</td>
-                                {{--<td>{{ $product->cheese_type }}</td>--}}
+                                <td>{{ $productInCart->name }}</td>
+                                <td>{{ $productInCart->cheese_type }}</td>
+                                <td>{{ $productInCart->price }}</td>
                                 <td>
-                                    <form method="get" action="/../admin/orders/edit/{{ $product->id }}">
+                                    <form method="get"
+                                          action="/../admin/orders/edit/{{ $order->id }}/{{ $productInCart->id }}">
                                         <button class="btn btn-outline-info btn-sm" type="submit"><span
                                                     data-feather="edit"></span></button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="post" action="/../admin/orders/remove/{{ $product->id }}">
-                                        {{ csrf_field() }}
+                                    <form method="get"
+                                          action="/../admin/orders/remove/{{ $order->id }}/{{ $productInCart->id }}">
                                         <button class="btn btn-outline-danger btn-sm" type="submit"><span
                                                     data-feather="trash-2"></span></button>
                                     </form>
@@ -39,6 +41,7 @@
                         </tbody>
                     </table>
                 </div>
+                <a role="button" href="/../admin/orders" class="btn btn-outline-danger btn-sm">Ga terug</a>
             </main>
         </div>
     </div>

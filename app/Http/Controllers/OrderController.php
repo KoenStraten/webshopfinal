@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ProductInCart;
 use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
@@ -41,30 +42,42 @@ class OrderController extends Controller
 
     public function edit($order_id)
     {
-//        $category = Category::find($order);
         $order = ShoppingCart::find($order_id);
         $user = User::find($order->user_id);
-        $productsInCart = ProductInCart::all()->where('shopping_cart_id', $order->id);
 
-        $products = array();
+        $productsInCart = ProductInCart::selectRaw(DB::raw('product_in_shopping_cart.id as "id", products.name as "name", products.price as "price", product_in_shopping_cart.cheese_type as "cheese_type"'))
+            ->join('products', 'products.id', '=', 'product_in_shopping_cart.product_id')
+            ->where('shopping_cart_id', $order->id)
+            ->orderBy('product_in_shopping_cart.id')->get();
 
-        foreach ($productsInCart as $productInCart) {
-            $product = Product::find($productInCart);
-            array_push($products, $product);
-        }
-
-//        $orders = ShoppingCart::selectRaw(DB::raw('shopping_carts.id as "id", users.name as "username", shopping_carts.total_cost as "total_cost", shopping_carts.paid as "paid", COUNT(product_in_shopping_cart.id) as "amountOfProducts"'))
-//            ->join('users', 'users.id', '=', 'shopping_carts.user_id')
-//            ->leftJoin('product_in_shopping_cart', 'shopping_carts.id', '=', 'product_in_shopping_cart.shopping_cart_id')
-//            ->groupBy('shopping_carts.id', 'users.name', 'shopping_carts.total_cost', 'shopping_carts.paid')
-//            ->orderBy('users.name')->get();
-
-        return view('pages/admin/orders/edit', compact('order', 'user', 'products'));
+        return view('pages/admin/orders/edit', compact('order', 'user', 'productsInCart'));
     }
 
     public function update()
     {
         return redirect('/admin/orders');
+    }
+
+    public function updateProduct($order_id, $product_id)
+    {
+        return redirect('/admin/orders');
+    }
+
+    public function removeProduct($order_id, $productInCart_id)
+    {
+        $productInCart = ProductInCart::find($productInCart_id);
+
+        $cart = ShoppingCart::find($order_id);
+
+        $product = Product::find($productInCart->product_id);
+
+        $cart->total_cost -= $product->price;
+
+        ProductInCart::find($productInCart_id)->delete();
+
+        $cart->save();
+
+        return back();
     }
 
     public function store()
