@@ -6,7 +6,10 @@ trait TransferShoppingCart {
 
     public function transferShoppingCart($cart, $productsInCart) {
         $oldCart = auth()->user()->shoppingCarts->where('paid', '0')->last();
-        if (!isset($oldCart)) {
+        if (!isset($oldCart) || count($oldCart->products) === 0) {
+            if (isset($oldCart)) {
+                $oldCart->delete();
+            }
             $user = auth()->user();
             $cart->user_id = $user->id;
             $cart->save();
