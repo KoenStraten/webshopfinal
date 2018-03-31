@@ -36,6 +36,7 @@ Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('s
 Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart');
 
 Route::get('/user', 'UserController@user');
+Route::post('/user/update', 'UserController@updateUser');
 
 //Auth::routes();
 
