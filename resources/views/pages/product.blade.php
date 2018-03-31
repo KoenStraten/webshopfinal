@@ -33,7 +33,7 @@
                         </div>
 
                         {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
-                            <form method="POST" action="../shoppingcart/store/">
+                            <form method="POST" action="../shoppingcart/store">
                                 <div class="form-group">
                                     <label>Cheese type</label>
                                     <select name="cheeseType" class="form-control">

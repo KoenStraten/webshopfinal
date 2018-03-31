@@ -31,7 +31,7 @@
                         <div class="col-md-2">
                             <p class="price">{{ "$" . $productInCart->product->price }}</p>
                             @auth
-                                <form method="POST" action="../shoppingcart/remove/">
+                                <form method="POST" action="../shoppingcart/remove">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
                                     <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
@@ -42,7 +42,7 @@
                                 </a>
                             @endauth
                             @guest
-                                <form method="POST" action="../shoppingcart/remove/">
+                                <form method="POST" action="../shoppingcart/remove">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="productInCart" value="{{ $loop->index }}">
                                     <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
@@ -57,7 +57,7 @@
                 @endforeach
                 <div class="row lastline">
                     <div class="col-md-6">
-                        <form method="POST" action="../shoppingcart/removeAll/">
+                        <form method="POST" action="../shoppingcart/removeAll">
                             {{ csrf_field() }}
                             <input type="hidden" name="shopping_cart_id"
                                    value="{{ $productsInCart->first()->shopping_cart_id }}">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-md-2">
                         <p class="pt-3 price">{{" $" . $productsInCart->first()->shoppingCart->total_cost }}</p>
-                        <a href="/../shoppingcart/purchase/" role="button" class="btn btn-block btn-warning">Afrekenen</a>
+                        <a href="/../shoppingcart/purchase" role="button" class="btn btn-block btn-warning">Afrekenen</a>
                     </div>
                 </div>
             @else

@@ -44,19 +44,6 @@
                         @endguest
                     </form>
                 </div>
-                {{--<div class="col-md-2">--}}
-                {{--<p class="price">{{ "$" . $productInCart->product->price }}</p>--}}
-                {{--<form method="POST" action="../shoppingcart/remove/">--}}
-                {{--{{ csrf_field() }}--}}
-                {{--<input type="hidden" name="productInCart" value="{{ $productInCart->id }}">--}}
-                {{--<button type="submit" class="btn btn-block btn-warning">Verwijder</button>--}}
-                {{--</form>--}}
-                {{--<form method="POST" action="../shoppingcart/edit/">--}}
-                {{--{{ csrf_field() }}--}}
-                {{--<input type="hidden" name="productInCart" value="{{ $productInCart->id }}">--}}
-                {{--<button type="submit" class="btn btn-block btn-warning">Bewerk</button>--}}
-                {{--</form>--}}
-                {{--</div>--}}
             </div>
         </div>
     </div>
