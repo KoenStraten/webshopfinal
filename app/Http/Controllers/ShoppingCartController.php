@@ -20,7 +20,7 @@ class ShoppingCartController extends Controller
 
     }
 
-    public function store()
+    public function maatje()
     {
         $product_id = request('product');
         $amount = request('amount');
@@ -90,7 +90,7 @@ class ShoppingCartController extends Controller
             session()->put('cart', $cart);
 
             session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
-            return view('pages/shoppingcart/shoppingcart');
+            return back();
         }
     }
 
