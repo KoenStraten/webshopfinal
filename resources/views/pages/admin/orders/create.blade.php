@@ -64,7 +64,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" name="amount[]">
+                                    <input class="form-control" type="number" name="amount[]" min="1" required>
                                 </td>
                                 <td>
                                     <input type='button' class='btn btn-secondary btn-sm AddNew' value='Voeg product toe'>
