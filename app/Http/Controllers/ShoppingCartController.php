@@ -17,7 +17,14 @@ class ShoppingCartController extends Controller
 
     public function index()
     {
+        // Aankoopgeschiedenis
+        $id = auth()->id();
+        $products =Product::selectRaw(DB::raw('products.*, shopping_carts.updated_at as "datePaid"'))
+            ->join('product_in_shopping_cart', 'product_in_shopping_cart.product_id', '=', 'products.id')
+            ->join('shopping_carts', 'shopping_carts.id', '=', 'product_in_shopping_cart.shopping_cart_id')
+            ->where('user_id', $id)->where('paid', 1)->orderBy('shopping_carts.updated_at', 'desc')->get();
 
+        return view('pages.purchaseHistory', compact('products'));
     }
 
     public function store()
