@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
@@ -31,7 +32,9 @@ class OrderController extends Controller
 
     public function create() {
         $users = User::all();
-        return view('pages/admin/orders/create', compact('users'));
+        $products = Product::all();
+        $cheeseTypes = DB::table('cheese_types')->get();
+        return view('pages/admin/orders/create', compact('users', 'products', 'cheeseTypes'));
     }
 
     public function edit($category) {

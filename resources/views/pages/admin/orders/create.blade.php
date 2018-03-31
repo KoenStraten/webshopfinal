@@ -44,10 +44,53 @@
                         </div>
                     </div>
 
+                    <!-- Dynamic Module Details -->
+
+                    <div class="form-group">
+                        <table class="table-responsive" id="dynamic_field">
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="products[]">
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="cheeseTypes[]">
+                                        @foreach($cheeseTypes as $cheeseType)
+                                            <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" name="amount[]">
+                                </td>
+                                <td>
+                                    <input type='button' class='btn btn-secondary btn-sm AddNew' value='Voeg product toe'>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">aanmaken</button>
                 </form>
             </main>
         </div>
     </div>
+
+    <script>
+        $('.AddNew').click(function () {
+            var row = $(this).closest('tr').clone();
+            row.find('input').val('');
+            $(this).closest('tr').after(row);
+            $('input[type="button"]', row).removeClass('AddNew')
+                .addClass('RemoveRow').val('Remove item');
+        });
+
+        $('table').on('click', '.RemoveRow', function () {
+            $(this).closest('tr').remove();
+        });
+    </script>
 
 @endsection
