@@ -88,7 +88,7 @@
                                     <p class="price">{{ "$" . $p->price }}</p>
                                     <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
                                     {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
-                                    <form class="pt-3" method="POST" action="../shoppingcart/store/">
+                                    <form class="pt-3" method="POST" action="../store/">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="product" value="{{ $p->id }}">
                                         <button type="submit" class="btn btn-block btn-warning"><i
