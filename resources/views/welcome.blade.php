@@ -95,7 +95,7 @@
                                         {{--class="fas fa-plus"></i>--}}
                                         {{--In winkelwagen--}}
                                         {{--</button>--}}
-                                        <input type="hidden" name="product" value="{{ $product->id }}">
+                                        <input type="hidden" name="product" value="{{ $p->id }}">
                                         <input class="btn btn-block btn-primary" type="submit"><i
                                                 class="fas fa-plus"></i>In winkelwagen
                                     </form>
