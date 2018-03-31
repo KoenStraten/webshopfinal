@@ -53,14 +53,34 @@ class OrderController extends Controller
         return view('pages/admin/orders/edit', compact('order', 'user', 'productsInCart'));
     }
 
-    public function update()
+    public function update($order_id)
     {
+        $paid = request('paid');
+
+        $cart = ShoppingCart::find($order_id);
+
+        $cart->paid = $paid;
+
+        $cart->save();
+
         return redirect('/admin/orders');
     }
 
-    public function updateProduct($order_id, $product_id)
+    public function updateProduct($order_id, $productInCart_id)
     {
-        return redirect('/admin/orders');
+        $productInCart = ProductInCart::find($productInCart_id);
+
+        $cart = ShoppingCart::find($order_id);
+
+        $product = Product::find($productInCart->product_id);
+
+        $cart->total_cost -= $product->price;
+
+        ProductInCart::find($productInCart_id)->delete();
+
+        $cart->save();
+
+        return view('pages/admin/orders/edit', compact('order', 'user', 'productsInCart'));
     }
 
     public function removeProduct($order_id, $productInCart_id)

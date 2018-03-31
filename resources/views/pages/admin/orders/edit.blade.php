@@ -41,7 +41,24 @@
                         </tbody>
                     </table>
                 </div>
-                <a role="button" href="/../admin/orders" class="btn btn-outline-danger btn-sm">Ga terug</a>
+                <form method="POST" action="/../admin/orders/save/{{ $order->id }}">
+                    <div class="form-group">
+                        {{ csrf_field() }}
+                        <label>Betaald</label>
+                        @if($order->paid)
+                            <div>
+                                <input class="ml-1 mr-2" name="paid" value="1" type="radio" checked="checked" required>ja
+                                <input class="ml-2 mr-2" name="paid" value="0" type="radio" required>nee
+                            </div>
+                        @else
+                            <div>
+                                <input class="ml-1 mr-2" name="paid" value="1" type="radio" required>ja
+                                <input class="ml-2 mr-2" name="paid" value="0" type="radio" checked="checked" required>nee
+                            </div>
+                        @endif
+                    </div>
+                    <button type="submit" class="btn btn-primary">Opslaan</button>
+                </form>
             </main>
         </div>
     </div>
