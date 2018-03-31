@@ -20,7 +20,7 @@ class ShoppingCartController extends Controller
 
     }
 
-    public function maatje()
+    public function store()
     {
         $product_id = request('product');
         $amount = request('amount');
