@@ -90,14 +90,11 @@
                                     {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
                                     <form class="pt-3" method="POST" action="../shoppingcart/store/">
                                         {{ csrf_field() }}
-                                        {{--<input type="hidden" name="product" value="{{ $p->id }}">--}}
-                                        {{--<button type="submit" class="btn btn-block btn-warning"><i--}}
-                                        {{--class="fas fa-plus"></i>--}}
-                                        {{--In winkelwagen--}}
-                                        {{--</button>--}}
                                         <input type="hidden" name="product" value="{{ $p->id }}">
-                                        <input class="btn btn-block btn-primary" type="submit"><i
-                                                class="fas fa-plus"></i>In winkelwagen
+                                        <button type="submit" class="btn btn-block btn-warning"><i
+                                                    class="fas fa-plus"></i>
+                                            In winkelwagen
+                                        </button>
                                     </form>
                                 </div>
                             </div>
