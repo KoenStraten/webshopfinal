@@ -20,6 +20,58 @@ class UserController extends Controller
         return view('pages/admin/users/index', compact('users'));
     }
 
+    public function updateUser()
+    {
+        $changes = false;
+
+        $user = User::find(request('user'));
+        $oldName = $user->name;
+        $oldEmail = $user->email;
+
+        $name = request('name');
+        $email = request('email');
+
+        $oldAdress = $user->adress;
+        $oldHouseNumber = $oldAdress->housenumber;
+        $oldZipcode = $oldAdress->zipcode;
+        $oldStreetname = $oldAdress->streetname;
+        $oldCity = $oldAdress->city;
+
+        $houseNumber = request('housenumber');
+        $zipCode = request('zipcode');
+        $streetName = request('streetname');
+        $city = request('city');
+
+        if ($oldHouseNumber != $houseNumber || $oldZipcode != $zipCode || $oldStreetname != $streetName || $oldCity != $city) {
+            $adress = new Adress();
+            $adress->housenumber = $houseNumber;
+            $adress->zipcode = $zipCode;
+            $adress->streetname = $streetName;
+            $adress->city = $city;
+            $adress->save();
+
+            $user->adress_id = $adress->id;
+            $user->save();
+
+            $changes = true;
+        }
+
+        if ($oldName != $name || $oldEmail != $email) {
+            $user->name = $name;
+            $user->email = $email;
+
+            $user->save();
+
+            $changes = true;
+        }
+
+        if ($changes) {
+            session()->flash('message', 'De wijzigingen zijn opgeslagen.');
+        }
+
+        return back();
+    }
+
     public function create()
     {
         $roles = UserRole::orderBy('role', 'desc')->get();
@@ -27,7 +79,8 @@ class UserController extends Controller
     }
 
 
-    public function edit($category) {
+    public function edit($category)
+    {
         $roles = UserRole::orderBy('role', 'desc')->get();
         $user = User::find($category);
 
@@ -35,7 +88,8 @@ class UserController extends Controller
     }
 
 
-    public function update() {
+    public function update()
+    {
         $this->validate(request(), [
             'name' => 'required|min:2',
             'email' => 'required|email',
@@ -93,7 +147,8 @@ class UserController extends Controller
         return redirect('/../admin/users');
     }
 
-    public function user() {
+    public function user()
+    {
         $user = Auth::user();
         return view('pages/user', compact('user'));
     }

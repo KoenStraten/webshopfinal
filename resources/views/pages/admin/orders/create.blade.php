@@ -67,7 +67,7 @@
                                     <input class="form-control" type="number" name="amount[]" min="1" required>
                                 </td>
                                 <td>
-                                    <input type='button' class='btn btn-secondary btn-sm AddNew' value='Voeg product toe'>
+                                    <input type='button' class='btn btn-secondary btn-sm AddNew' value='Voeg rij toe'>
                                 </td>
                             </tr>
                         </table>
@@ -85,7 +85,7 @@
             row.find('input').val('');
             $(this).closest('tr').after(row);
             $('input[type="button"]', row).removeClass('AddNew')
-                .addClass('RemoveRow').val('Remove item');
+                .addClass('RemoveRow').val('Verwijder rij');
         });
 
         $('table').on('click', '.RemoveRow', function () {

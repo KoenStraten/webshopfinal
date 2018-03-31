@@ -37,6 +37,7 @@ Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('s
 Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart');
 
 Route::get('/user', 'UserController@user');
+Route::post('/user/update', 'UserController@updateUser');
 
 //Auth::routes();
 
@@ -73,6 +74,7 @@ Route::get('/admin/orders/create', 'OrderController@create');
 Route::get('/admin/orders/edit/{order}', 'OrderController@edit');
 Route::get('/admin/orders/edit/{order}/{product}', 'OrderController@updateProduct');
 Route::get('/admin/orders/remove/{order}/{product}', 'OrderController@removeProduct');
+Route::post('/admin/orders/update/{order}', 'OrderController@update');
 Route::post('/admin/orders/goback', 'OrderController@goBack');
 Route::post('/admin/orders/edit', 'OrderController@update');
 Route::post('/admin/orders/store', 'OrderController@store');

@@ -41,9 +41,66 @@
                         </tbody>
                     </table>
                 </div>
-                <a role="button" href="/../admin/orders" class="btn btn-outline-danger btn-sm">Ga terug</a>
+                <form method="POST" action="/../admin/orders/update/{{ $order->id }}">
+                    <div class="form-group">
+                        {{ csrf_field() }}
+                        <label>Betaald</label>
+                        @if($order->paid)
+                            <div>
+                                <input class="ml-1 mr-2" name="paid" value="1" type="radio" checked="checked" required>ja
+                                <input class="ml-2 mr-2" name="paid" value="0" type="radio" required>nee
+                            </div>
+                        @else
+                            <div>
+                                <input class="ml-1 mr-2" name="paid" value="1" type="radio" required>ja
+                                <input class="ml-2 mr-2" name="paid" value="0" type="radio" checked="checked" required>nee
+                            </div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <table class="table-responsive" id="dynamic_field">
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="products[]">
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="cheeseTypes[]">
+                                        @foreach($cheeseTypes as $cheeseType)
+                                            <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" value="0" name="amount[]" min="1"
+                                           required>
+                                </td>
+                                <td>
+                                    <input type='button' class='btn btn-secondary AddNew'
+                                           value='Voeg rij toe'>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Opslaan</button>
+                </form>
             </main>
         </div>
     </div>
+    <script>
+        $('.AddNew').click(function () {
+            var row = $(this).closest('tr').clone();
+            row.find('input').val('');
+            $(this).closest('tr').after(row);
+            $('input[type="button"]', row).removeClass('AddNew')
+                .addClass('RemoveRow').val('Verwijder rij');
+        });
 
+        $('table').on('click', '.RemoveRow', function () {
+            $(this).closest('tr').remove();
+        });
+    </script>
 @endsection

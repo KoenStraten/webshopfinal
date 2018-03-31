@@ -45,22 +45,71 @@ class OrderController extends Controller
         $order = ShoppingCart::find($order_id);
         $user = User::find($order->user_id);
 
+        $users = User::all();
+        $products = Product::all();
+        $cheeseTypes = DB::table('cheese_types')->get();
+
         $productsInCart = ProductInCart::selectRaw(DB::raw('product_in_shopping_cart.id as "id", products.name as "name", products.price as "price", product_in_shopping_cart.cheese_type as "cheese_type"'))
             ->join('products', 'products.id', '=', 'product_in_shopping_cart.product_id')
             ->where('shopping_cart_id', $order->id)
             ->orderBy('product_in_shopping_cart.id')->get();
 
+        return view('pages/admin/orders/edit', compact('order', 'user', 'users', 'products', 'cheeseTypes', 'productsInCart'));
+    }
+
+    public function update($order_id)
+    {
+        $this->validate(request(), [
+            'products' => 'required',
+            'cheeseTypes' => 'required',
+            'amount' => 'required'
+        ]);
+
+        $paid = request('paid');
+        $products = request('products');
+        $cheeseTypes = request('cheeseTypes');
+        $amounts = request('amount');
+
+        $cart = ShoppingCart::find($order_id);
+
+        $cart->paid = $paid;
+        $totalCost = $cart->total_cost;
+
+        for ($i = 0; $i < count($products); $i++) {
+            if (isset($amounts[$i])) {
+                for ($j = 0; $j < $amounts[$i]; $j++) {
+                    $totalCost = $totalCost + Product::find($products[$i])->price;
+                    $pic = new ProductInCart();
+                    $pic->product_id = $products[$i];
+                    $pic->shopping_cart_id = $cart->id;
+                    $pic->cheese_type = $cheeseTypes[$i];
+                    $pic->save();
+                }
+            }
+        }
+
+        $cart->total_cost = $totalCost;
+
+        $cart->save();
+
+        return redirect('/admin/orders');
+    }
+
+    public function updateProduct($order_id, $productInCart_id)
+    {
+        $productInCart = ProductInCart::find($productInCart_id);
+
+        $cart = ShoppingCart::find($order_id);
+
+        $product = Product::find($productInCart->product_id);
+
+        $cart->total_cost -= $product->price;
+
+        ProductInCart::find($productInCart_id)->delete();
+
+        $cart->save();
+
         return view('pages/admin/orders/edit', compact('order', 'user', 'productsInCart'));
-    }
-
-    public function update()
-    {
-        return redirect('/admin/orders');
-    }
-
-    public function updateProduct($order_id, $product_id)
-    {
-        return redirect('/admin/orders');
     }
 
     public function removeProduct($order_id, $productInCart_id)
@@ -80,7 +129,8 @@ class OrderController extends Controller
         return back();
     }
 
-    public function store() {
+    public function store()
+    {
         $this->validate(request(), [
             'products' => 'required',
             'cheeseTypes' => 'required',
@@ -99,7 +149,7 @@ class OrderController extends Controller
 
         $totalCost = 0;
 
-        for($i = 0; $i < count($products); $i++) {
+        for ($i = 0; $i < count($products); $i++) {
             if (isset($amounts[$i])) {
                 for ($j = 0; $j < $amounts[$i]; $j++) {
                     $totalCost = $totalCost + Product::find($products[$i])->price;
