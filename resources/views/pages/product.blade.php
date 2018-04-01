@@ -6,7 +6,7 @@
         <div class="row mt-4">
             <div class="col-md-8">
                 <div class="row justify-content-center">
-                    <img src="{{ $product->image }}" class="image-responsive pic" alt="Kaas">
+                    <img src="{{ $product->image }}" class="image-responsive pic" alt="Product image">
                 </div>
             </div>
             <div class="col-md-4">

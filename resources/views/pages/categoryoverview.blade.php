@@ -14,7 +14,7 @@
                                 @endif
                                 <div class="col-md-3">
                                     <a href="{{ "/../category/" . $category->category }}"><img
-                                                src="{{ $category->image }}" class="img-responsive xs-pic"></a>
+                                                src="{{ $category->image }}" class="img-responsive xs-pic" alt="category image"></a>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">

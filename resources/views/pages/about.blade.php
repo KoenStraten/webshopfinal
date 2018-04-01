@@ -10,7 +10,7 @@
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <div class="row pb-5">
                 <img src="https://images.pexels.com/photos/248880/pexels-photo-248880.jpeg?auto=compress&cs=tinysrgb&h=350"
-                     class="img-fluid col-md-6 h-75">
+                     class="img-fluid col-md-6 h-75" alt="farm">
                 <div class="col-md-6">
                     <h3>Onze boerderij</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -43,11 +43,11 @@
                         dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
-                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&h=350">
+                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cows">
             </div>
 
             <div class="row">
-                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/162788/parmigiano-reggiano-cheese-italy-italian-162788.jpeg?auto=compress&cs=tinysrgb&h=350">
+                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/162788/parmigiano-reggiano-cheese-italy-italian-162788.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cheese">
                 <div class="col-md-6">
                     <h3>De kaas</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

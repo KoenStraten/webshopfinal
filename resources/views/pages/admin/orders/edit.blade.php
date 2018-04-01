@@ -58,7 +58,14 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label>Extra producten toevoegen</label>
+                        <p class="text-muted">Wanneer aantal op 0 staat, zal er niks extra's worden toegevoegd.</p>
                         <table class="table-responsive" id="dynamic_field">
+                            <tr>
+                                <th>Product</th>
+                                <th>Kaassoort</th>
+                                <th>Aantal</th>
+                            </tr>
                             <tr>
                                 <td>
                                     <select class="form-control" name="products[]">
@@ -75,7 +82,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" value="0" name="amount[]" min="1"
+                                    <input class="form-control" type="number" value="0" name="amount[]" min="0"
                                            required>
                                 </td>
                                 <td>

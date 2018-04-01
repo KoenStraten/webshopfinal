@@ -104,7 +104,7 @@
                                 @foreach($mbProducts as $product)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><img class="table-img" src="{{ $product->image }}"></td>
+                                        <td><img class="table-img" src="{{ $product->image }}" alt="product image"></td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->category }}</td>
