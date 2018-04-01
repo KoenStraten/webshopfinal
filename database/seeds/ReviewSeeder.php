@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class ReviewSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Was erg lekker, ik koop er meteen 10',
             'user_id' => 2,
             'product_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -26,6 +28,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Een kaas met lekkere bite',
             'user_id' => 3,
             'product_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -35,6 +38,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Niet heel erg lekker',
             'user_id' => 2,
             'product_id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -44,6 +48,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Was niet lekker, ik koop er meteen -10',
             'user_id' => 3,
             'product_id' => 4,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -53,6 +58,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Was erg lekker, ik koop er meteen 10',
             'user_id' => 2,
             'product_id' => 5,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -62,7 +68,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Een kaas met lekkere bite',
             'user_id' => 3,
             'product_id' => 6,
-
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('reviews')->insert([
@@ -71,6 +77,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Was erg lekker, ik koop er meteen 10',
             'user_id' => 2,
             'product_id' => 7,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -80,6 +87,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Was niet lekker, ik koop er meteen -10',
             'user_id' => 3,
             'product_id' => 8,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -89,6 +97,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Het smaakte naar kaas',
             'user_id' => 2,
             'product_id' => 9,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
 
@@ -98,6 +107,7 @@ class ReviewSeeder extends Seeder
             'text' => 'Nooit meer',
             'user_id' => 3,
             'product_id' => 10,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
         ]);
     }

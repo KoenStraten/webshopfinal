@@ -60,26 +60,26 @@ class ProductSeeder extends Seeder
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Kaasletter C',
+            'name' => 'Kaasletter K',
             'price' => 14.99,
-            'description' => "De lekkerste 'C' ter wereld!",
-            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'description' => "De lekkerste 'K' ter wereld!",
+            'image' => 'https://rfclipart.com/image/big/05-07-16/cheese-font-letter-k-Download-Royalty-free-Vector-File-EPS-32479.jpg',
             'category' => 'Kaasletters',
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Kaasletter D',
+            'name' => 'Kaasletter S',
             'price' => 14.99,
-            'description' => "De lekkerste 'D' ter wereld!",
-            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'description' => "De lekkerste 'S' ter wereld!",
+            'image' => 'https://catalogs.seacommerce.nl/versop/SD_medium/medium_BruinS.png',
             'category' => 'Kaasletters',
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Kaasletter E',
+            'name' => 'Kaasletter R',
             'price' => 14.99,
-            'description' => "De lekkerste 'E' ter wereld!",
-            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'description' => "De lekkerste 'R' ter wereld!",
+            'image' => 'https://indebuurt.nl/apeldoorn/wp-content/uploads/2017/11/kaasman-kaasletter-1.jpg',
             'category' => 'Kaasletters',
         ]);
 
@@ -87,7 +87,7 @@ class ProductSeeder extends Seeder
             'name' => 'Kaasletter F',
             'price' => 14.99,
             'description' => "De lekkerste 'F' ter wereld!",
-            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'image' => 'https://catalogs.seacommerce.nl/versop/images/GeelP.png',
             'category' => 'Kaasletters',
         ]);
     }
