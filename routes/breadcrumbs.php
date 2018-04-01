@@ -6,7 +6,7 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
 });
 
 // Home > [Search]
-Breadcrumbs::register('search', function($breadcrumbs, $search) {
+Breadcrumbs::register('search', function ($breadcrumbs, $search) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($search, route('search', $search));
 });
@@ -36,7 +36,7 @@ Breadcrumbs::register('categories', function ($breadcrumbs) {
 });
 
 // Home > [category]
-Breadcrumbs::register('category', function($breadcrumbs, $category) {
+Breadcrumbs::register('category', function ($breadcrumbs, $category) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($category, route('category', $category));
 });
@@ -48,15 +48,21 @@ Breadcrumbs::register('product', function ($breadcrumbs, $product) {
 });
 
 // Home > ShoppingCart
-Breadcrumbs::register('shoppingCart', function($breadcrumbs) {
+Breadcrumbs::register('shoppingCart', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Winkelwagen', route('shoppingCart'));
 });
 
 // Home > ShoppingCart
-Breadcrumbs::register('shoppingCartPurchase', function($breadcrumbs) {
+Breadcrumbs::register('shoppingCartPurchase', function ($breadcrumbs) {
     $breadcrumbs->parent('shoppingCart');
     $breadcrumbs->push('Betalen', route('shoppingCartPurchase'));
+});
+
+// Home > Wireframes
+Breadcrumbs::register('wireframes', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Wireframes', route('wireframes'));
 });
 
 ?>

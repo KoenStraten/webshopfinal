@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-    {{--    {{ Breadcrumbs::render('wireframes') }}--}}
+    {{ Breadcrumbs::render('wireframes') }}
 
     <div class="container">
         <h3 class="pt-3">Wireframes</h3>
