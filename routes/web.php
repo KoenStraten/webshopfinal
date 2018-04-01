@@ -44,6 +44,7 @@ Route::post('/user/update', 'UserController@updateUser');
 
 // Review
 Route::post('/postReview', 'ReviewController@store');
+Route::post('/reviews/remove/{id}', 'ReviewController@destroy');
 
 // Search
 Route::get('/search', 'SearchController@index')->name('search');

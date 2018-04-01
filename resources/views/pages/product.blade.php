@@ -32,30 +32,27 @@
 
                         </div>
 
-                        {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
-                            <form method="POST" action="../shoppingcart/store">
-                                <div class="form-group">
-                                    <label>Cheese type</label>
-                                    <select name="cheeseType" class="form-control">
-                                        @foreach($cheeseTypes as $cheeseType)
-                                            <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <form method="POST" action="../shoppingcart/store">
+                            <div class="form-group">
+                                <label>Cheese type</label>
+                                <select name="cheeseType" class="form-control">
+                                    @foreach($cheeseTypes as $cheeseType)
+                                        <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    {{ csrf_field() }}
-                                    <label>Amount</label>
-                                    <input name="amount" id="amount" type="number" value="1" class="form-control">
-                                </div>
-                                <input type="hidden" name="product" value="{{ $product->id }}">
-                                <button type="submit" class="btn btn-block btn-warning"><i class="fas fa-plus"></i> In
-                                    winkelwagen
-                                </button>
-                            </form>
-                        {{--@else
-                            <button disabled class="btn btn-block btn-warning">Log in</button>
-                        @endif--}}
+                            <div class="form-group">
+                                {{ csrf_field() }}
+                                <label>Amount</label>
+                                <input name="amount" id="amount" type="number" value="1" class="form-control">
+                            </div>
+                            <input type="hidden" name="product" value="{{ $product->id }}">
+                            <button type="submit" class="btn btn-block btn-warning"><i class="fas fa-plus"></i> In
+                                winkelwagen
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -78,6 +75,7 @@
                                     <form class="col-md-10" method="post" action="../postReview">
                                         {{ csrf_field() }}
 
+                                        {{-- Stars input field --}}
                                         <div class="stars">
                                             <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
 
@@ -122,6 +120,12 @@
                                         @endif
                                     @endfor
                                     <h5 class="col-md-6">{{ $review->title }}</h5>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin' || $review->fromCurrentUser())
+                                        <form method="POST" action="/../reviews/remove/{{ $review->id }}">
+                                            {{ csrf_field() }}
+                                            <button class="btn btn-danger btn-sm" type="submit">Verwijder</button>
+                                        </form>
+                                    @endif
                                 </div>
                                 <p class="col-md-10 text-muted">{{ $review->getReviewString() }}</p>
                                 <p>{{ $review->text }}</p>
