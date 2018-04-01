@@ -102,7 +102,8 @@ class CategoryController extends Controller
         $image = base64_encode($image);
 
         $category = new Category();
-        $category->category = request('category');
+        $categoryString = str_replace(' ', '', request('category'));
+        $category->category = $categoryString;
         $category->image = $image;
         $category->description = request('description');
         $category->save();
