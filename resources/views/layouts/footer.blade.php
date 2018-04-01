@@ -6,9 +6,9 @@
                 <li><a href="/../about">Over ons</a></li>
             </ul>
             <ul class="list-inline float-left pr-3 text-center">
-                <li><a href="www.facebook.com">Facebook</a></li>
-                <li><a href="www.twitter.com">Twitter</a></li>
-                <li><a href="www.instagram.com">Instagram</a></li>
+                <li><a href="http://www.facebook.com">Facebook</a></li>
+                <li><a href="http://www.twitter.com">Twitter</a></li>
+                <li><a href="http://www.instagram.com">Instagram</a></li>
             </ul>
             <ul class="list-inline text-center">
                 <li><a href="/../wireframes">Wireframes</a></li>
