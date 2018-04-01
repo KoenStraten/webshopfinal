@@ -39,15 +39,17 @@
                 <!-- Right Side Of Navbar -->
 
                     <ul class="navbar-nav ml-auto">
-                        <form action="/search" class="pr-3" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="query"
-                                       placeholder="Waar heb je zin in?"/>
-                                <button type="submit" class=" btn btn-secondary notcurved"><i
-                                            class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
+                        <li>
+                            <form action="/search" class="pr-3" method="GET">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="query"
+                                           placeholder="Waar heb je zin in?"/>
+                                    <button type="submit" class=" btn btn-secondary notcurved"><i
+                                                class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
                         @foreach($rightItems as $item)
                             @if(count($item->children) > 0)
                                 <li class="nav-item dropdown">
