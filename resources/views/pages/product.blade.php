@@ -125,6 +125,7 @@
                                     @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin' || $review->fromCurrentUser())
                                         <form method="POST" action="/../reviews/remove/{{ $review->id }}">
                                             {{ csrf_field() }}
+                                            <input type="hidden" value="{{ $product->id }}" name="product_id">
                                             <button class="btn btn-danger btn-sm" type="submit">Verwijder</button>
                                         </form>
                                     @endif

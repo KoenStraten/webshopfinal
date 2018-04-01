@@ -129,7 +129,7 @@ class OrderController extends Controller
 
         $cart->save();
 
-        return back();
+        return redirect('/../admin/orders/edit/' . $order_id);
     }
 
     public function store()
