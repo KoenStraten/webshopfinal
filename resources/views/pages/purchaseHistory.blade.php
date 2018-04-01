@@ -1,5 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
+@section('title', 'Aankoopgeschiedenis')
     {{ Breadcrumbs::render('purchaseHistory') }}
 
     <div class="container">

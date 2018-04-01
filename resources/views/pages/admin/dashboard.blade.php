@@ -1,5 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
+@section('title', 'Dashboard')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
