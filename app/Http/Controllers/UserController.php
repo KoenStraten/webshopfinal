@@ -63,15 +63,11 @@ class UserController extends Controller
         $city = request('city');
 
         if ($oldHouseNumber != $houseNumber || $oldZipcode != $zipCode || $oldStreetname != $streetName || $oldCity != $city) {
-            $adress = new Adress();
-            $adress->housenumber = $houseNumber;
-            $adress->zipcode = $zipCode;
-            $adress->streetname = $streetName;
-            $adress->city = $city;
-            $adress->save();
-
-            $user->adress_id = $adress->id;
-            $user->save();
+            $oldAdress->housenumber = $houseNumber;
+            $oldAdress->zipcode = $zipCode;
+            $oldAdress->streetname = $streetName;
+            $oldAdress->city = $city;
+            $oldAdress->save();
 
             $changes = true;
         }
@@ -88,6 +84,7 @@ class UserController extends Controller
         if ($changes) {
             session()->flash('message', 'De wijzigingen zijn opgeslagen.');
         }
+
         return $this->user();
     }
 
