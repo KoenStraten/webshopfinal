@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Review;
 use Illuminate\Http\Request;
 use App\Product;
-use App\Specification;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -38,10 +37,9 @@ class HomeController extends Controller
     {
         $product = Product::find($id);
         $product->image = "data:image;base64," . $product->image;
-        $specifications = Specification::getAllById($id);
         $cheeseTypes = DB::table('cheese_types')->get();
 
-        return view('pages.product', compact('product', 'specifications', 'cheeseTypes'));
+        return view('pages.product', compact('product', 'cheeseTypes'));
 
     }
 }

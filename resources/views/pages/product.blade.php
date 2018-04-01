@@ -139,27 +139,6 @@
             </div>
         </div>
     </div>
-
-    <br>
-
-    <h3>
-        <a class="text-dark card-header card" data-toggle="collapse" href="#multiCollapseExample2"
-           role="button" aria-expanded="false" aria-controls="multiCollapseExample2">Specificaties</a>
-    </h3>
-
-    <div class="col">
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-            <div class="card card-body">
-                @foreach ($specifications as $spec)
-                    <div class="row">
-                        <h6 class="col-md-4">{{ $spec->type }}</h6>
-                        <h6 class="col-md-4 text-muted">{{  $spec->answer }}</h6>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
 </div>
 
 @endsection

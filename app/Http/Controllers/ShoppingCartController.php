@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
-use App\Specification;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

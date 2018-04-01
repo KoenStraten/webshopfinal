@@ -99,7 +99,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        return view('pages/admin/orders/editProduct', compact('order', 'product', 'cheeseTypes', 'productInCart'));
+        return view('pages/admin/orders/editproduct', compact('order', 'product', 'cheeseTypes', 'productInCart'));
     }
 
     public function updateProduct($order_id, $productInCart_id)
