@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-
+@section('title', 'Order aanmaken')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')

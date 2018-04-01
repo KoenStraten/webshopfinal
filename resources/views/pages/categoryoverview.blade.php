@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-
+@section('title', 'Categorieën')
     {{ Breadcrumbs::render('categories') }}
 
     <div class="container">

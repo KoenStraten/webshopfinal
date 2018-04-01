@@ -1,10 +1,10 @@
 @extends ('layouts.master')
 @section ('content')
-
+@section('title', 'Producten')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
+            <main class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Products</h1>
                     <a role="button" class="btn btn-primary float-right" href="/../admin/products/create"><span data-feather="plus"></span></a>
@@ -15,10 +15,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Description</th>
-                                <th>Category</th>
+                                <th>naam</th>
+                                <th>prijs</th>
+                                <th>beschrijving</th>
+                                <th>categorie</th>
+                                <th>aanpassen</th>
+                                <th>verwijderen</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,10 +1,21 @@
 @extends ('layouts.master')
 @section ('content')
+@section('title', 'Mijn account')
     {{ Breadcrumbs::render('account') }}
 
     <div class="container">
         <h3 class="pt-3">Mijn account</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow mb-5">
+
+            @if(count($errors))
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <h3 class="pb-4">Inloggegevens</h3>
             <form method="post" action="/../user/update">
