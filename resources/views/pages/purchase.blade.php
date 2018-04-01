@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Betalen')
+@section ('content')
     {{ Breadcrumbs::render('shoppingCartPurchase') }}
 
     <div class="container">
@@ -64,7 +64,8 @@
             <div class="row p-3 mb-3 justify-content-center bg-white">
                 <div class="col-md-6 p-5 border-right">
                     <h3>Al een account?</h3>
-                    <p>Bent u al een bestaande klant? dat zijn wij zeer dankbaar! log wel eerst in om je producten te kunnen afrekenen.</p>
+                    <p>Bent u al een bestaande klant? dat zijn wij zeer dankbaar! log wel eerst in om je producten te
+                        kunnen afrekenen.</p>
                     <form method="POST" action="/../login">
                         @csrf
 

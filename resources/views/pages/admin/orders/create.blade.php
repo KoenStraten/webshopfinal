@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Order aanmaken')
+@section ('content')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
@@ -70,7 +70,8 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" name="amount[]" value="1" min="1" max="50" required>
+                                    <input class="form-control" type="number" name="amount[]" value="1" min="1" max="50"
+                                           required>
                                 </td>
                                 <td>
                                     <input type='button' class='btn btn-secondary btn-sm AddNew' value='Voeg rij toe'>

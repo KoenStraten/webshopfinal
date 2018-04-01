@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Winkelwagen')
+@section ('content')
     {{ Breadcrumbs::render('shoppingCart') }}
 
     <div class="container">

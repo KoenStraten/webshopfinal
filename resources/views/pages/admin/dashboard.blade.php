@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Dashboard')
+@section ('content')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
@@ -73,14 +73,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($recentUsers as $user)
+                                @foreach($recentUsers as $user)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role }}</td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

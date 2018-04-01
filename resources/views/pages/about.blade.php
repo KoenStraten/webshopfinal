@@ -1,12 +1,13 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Over ons')
+@section ('content')
     {{ Breadcrumbs::render('about') }}
 
     <div class="container">
         <h3 class="pt-3">Over ons</h3>
         <div class="alert alert-info">
-            <p>Dit is een school project, dus wij verkopen ook geen kaasproducten, voor de echte kaasletters/kaasfiguren ga naar <a href="http://www.kaasletter.nl/">www.kaasletter.nl</a></p>
+            <p>Dit is een school project, dus wij verkopen ook geen kaasproducten, voor de echte kaasletters/kaasfiguren
+                ga naar <a href="http://www.kaasletter.nl/">www.kaasletter.nl</a></p>
         </div>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <div class="row pb-5">
@@ -44,11 +45,15 @@
                         dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
-                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cows">
+                <img class="img-fluid col-md-6"
+                     src="https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&h=350"
+                     alt="cows">
             </div>
 
             <div class="row">
-                <img class="img-fluid col-md-6" src="https://images.pexels.com/photos/162788/parmigiano-reggiano-cheese-italy-italian-162788.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cheese">
+                <img class="img-fluid col-md-6"
+                     src="https://images.pexels.com/photos/162788/parmigiano-reggiano-cheese-italy-italian-162788.jpeg?auto=compress&cs=tinysrgb&h=350"
+                     alt="cheese">
                 <div class="col-md-6">
                     <h3>De kaas</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
