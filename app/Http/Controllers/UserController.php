@@ -38,7 +38,7 @@ class UserController extends Controller
 
         if ($oldName != request('name')) {
             $this->validate(request(), [
-                'email' => 'required|string|email|max:255|unique:users',
+                'name' => 'required|string|max:255|unique:users',
             ]);
         }
 
