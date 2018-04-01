@@ -23,6 +23,11 @@ class AdminController extends Controller
 
         $recentUsers = User::orderBy('created_at', 'desc')->limit(10)->get();
         $mbProducts = Product::orderByPopularity()->limit(10)->get();
+        foreach($mbProducts as $product) {
+            if (substr($product->image, 0, 4) != 'http') {
+                $product->image = "data:image;base64," . $product->image;
+            }
+        }
 
         return view('pages.admin.dashboard', compact('userAmount', 'orderAmount', 'productAmount', 'categoryAmount', 'recentUsers', 'mbProducts'));
     }

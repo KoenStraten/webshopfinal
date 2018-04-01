@@ -13,6 +13,7 @@
             <ul class="list-inline text-center">
                 <li><a href="/../wireframes">Wireframes</a></li>
                 <li><a href="/../database_eer">Database EER</a></li>
+                <li><a href="https://validator.w3.org/nu/?doc={{ request()->url() }}">W3C Validator</a></li>
             </ul>
         </div>
         <div class="row justify-content-center">
