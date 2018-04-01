@@ -57,7 +57,7 @@ Route::get('/admin/products', 'ProductController@index');
 Route::get('/admin/products/create', 'ProductController@create');
 Route::get('/admin/products/edit/{id}', 'ProductController@edit');
 Route::post('/admin/products/edit', 'ProductController@update');
-Route::post('/admin/products/store', 'productController@store');
+Route::post('/admin/products/store', 'ProductController@store');
 Route::post('/admin/products/remove/{id}', 'ProductController@remove');
 
 // users CRUD
