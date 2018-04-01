@@ -43,6 +43,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|min:20',
             'category' => 'required',
+            'image' => 'max:1024'
         ]);
 
         if ($request->file('image')) {
@@ -71,7 +72,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|min:20',
             'category' => 'required',
-            'image' => 'required',
+            'image' => 'required|max:1024',
         ]);
 
         $image = addslashes($request->file('image'));

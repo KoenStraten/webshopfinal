@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label>Foto: </label>
-                        <input name="image" type="file" required>
+                        <input name="image" type="file" accept="image/*" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">aanmaken</button>
