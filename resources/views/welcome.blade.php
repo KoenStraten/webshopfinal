@@ -55,9 +55,6 @@
         </a>
     </div>
 
-
-
-
     <div class="container">
         <div class="my-3 p-3 mt-5 bg-white rounded box-shadow">
             <h3 class="pb-2">Populaire producten:</h3>

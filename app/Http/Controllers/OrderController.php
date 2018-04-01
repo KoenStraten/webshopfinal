@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -20,10 +17,6 @@ class OrderController extends Controller
 
     public function index()
     {
-        /*SELECT users.name, shopping_carts.total_cost, shopping_carts.paid, COUNT(product_in_shopping_cart.id) FROM shopping_carts
-        JOIN users ON users.id = shopping_carts.user_id
-        JOIN product_in_shopping_cart ON shopping_carts.id = product_in_shopping_cart.shopping_cart_id
-        GROUP BY shopping_carts.id*/
         $orders = ShoppingCart::getAllOrders();
 
         return view('pages.admin.orders.index', compact('orders'));
