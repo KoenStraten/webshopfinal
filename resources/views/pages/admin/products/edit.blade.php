@@ -45,8 +45,8 @@
                         <label>Categorie</label>
                         <select class="form-control" name="category">
                             @foreach($categories as $category)
-                                @if ($product->category == $category)
-                                    <option value="{{ $category->category }}" selected>{{ $category->category }}</option>
+                                @if ($product->category == $category->category)
+                                    <option value="{{ $category->category }}" selected="selected">{{ $category->category }}</option>
                                 @else
                                     <option value="{{ $category->category }}">{{ $category->category }}</option>
                                 @endif

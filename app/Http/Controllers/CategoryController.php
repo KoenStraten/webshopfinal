@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\Compress;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 
 class CategoryController extends Controller
 {
+    use Compress;
+
     public function __construct()
     {
         $this->middleware('admin')->except('index', 'show');
@@ -61,43 +64,38 @@ class CategoryController extends Controller
         return view('pages/admin/categories/edit', compact('category'));
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
-            'image' => 'required|max:1024'
+            'image' => 'max:1024'
         ]);
 
         $category = Category::find(request('category_old'));
         $category->category = request('category');
         $category->description = request('description');
-        $oldImage = $category->image();
-        if ($oldImage != request('image')) {
-            $category->image = request('image');
+//        $oldImage = $category->image;
+//        dd($oldImage, request('image'));
+//
+//        if ($oldImage != request('image')) {
+
+        if ($request->file('image')) {
+            $smallImage = $this->compress($request->file('image'));
+
+            $image = addslashes($smallImage);
+            $image = file_get_contents($image);
+            $image = base64_encode($image);
         }
+
+        if (isset($image)) {
+            $category->image = $image;
+        }
+//        }
 
         $category->save();
 
         return redirect('/admin/categories');
-    }
-
-    public function compress($source, $destination, $quality)
-    {
-
-        $info = getimagesize($source);
-
-        if ($info['mime'] == 'image/jpeg')
-            $image = imagecreatefromjpeg($source);
-        elseif ($info['mime'] == 'image/gif')
-            $image = imagecreatefromgif($source);
-
-        elseif ($info['mime'] == 'image/png')
-            $image = imagecreatefrompng($source);
-
-        imagejpeg($image, $destination, $quality);
-
-        return $destination;
     }
 
     public function store(Request $request)
@@ -105,12 +103,12 @@ class CategoryController extends Controller
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
-            'image' => 'required|max:1024|mimes:jpeg,png,gif',
+            'image' => 'required|max:1024',
         ]);
 
-        $destination_img = 'newimage.jpg';
+        dd($request->file('image'));
 
-        $smallImage = $this->compress($request->file('image'), $destination_img, 30);
+        $smallImage = $this->compress($request->file('image'));
 
         $image = addslashes($smallImage);
         $image = file_get_contents($image);

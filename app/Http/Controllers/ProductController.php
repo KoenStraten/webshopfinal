@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\Traits\Compress;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use Compress;
+
     public function __construct()
     {
         $this->middleware('admin');
@@ -47,7 +50,9 @@ class ProductController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $image = addslashes($request->file('image'));
+            $smallImage = $this->compress($request->file('image'));
+
+            $image = addslashes($smallImage);
             $image = file_get_contents($image);
             $image = base64_encode($image);
         }
@@ -75,7 +80,11 @@ class ProductController extends Controller
             'image' => 'required|max:1024',
         ]);
 
-        $image = addslashes($request->file('image'));
+        $destination_img = 'newimage.jpg';
+
+        $smallImage = $this->compress($request->file('image'));
+
+        $image = addslashes($smallImage);
         $image = file_get_contents($image);
         $image = base64_encode($image);
 
