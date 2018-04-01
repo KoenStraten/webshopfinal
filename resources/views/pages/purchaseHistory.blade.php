@@ -7,7 +7,7 @@
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @foreach ($products as $p)
                 @if(!isset($oldDate) || date('d-m-Y', strtotime($p->datePaid)) != $oldDate)
-                    <h3 class="text-secondary">{{ 'Gekocht op : ' . date('d-m-Y', strtotime($p->datePaid)) }}</h3>
+                    <h3 class="text-secondary">{{ 'Gekocht op ' . date('d-m-Y', strtotime($p->datePaid)) }}</h3>
                     @php $oldDate = date('d-m-Y', strtotime($p->datePaid)) @endphp
                 @endif
                 @if (!$loop->last)
