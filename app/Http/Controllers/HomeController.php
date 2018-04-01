@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        $product->image = "data:image;base64," . $product->image;
         $specifications = Specification::getAllById($id);
         $cheeseTypes = DB::table('cheese_types')->get();
 

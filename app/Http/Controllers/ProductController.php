@@ -41,18 +41,19 @@ class ProductController extends Controller
             'category' => 'required',
         ]);
 
-        if ($request->file('image')) {
+        if ($request->file('image')) {/*
             $path = $request->file('image')->store('public');
-            $path = str_replace('public', '/storage', $path);
+            $path = str_replace('public', '/storage', $path);*/
+
         }
 
         $product = Product::find(request('id'));
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
-        if (isset($path)) {
+        /*if (isset($path)) {
             $product->image = $path;
-        }
+        }*/
         $product->category = request('category');
         $product->save();
 
@@ -68,16 +69,18 @@ class ProductController extends Controller
             'category' => 'required',
             'image' => 'required',
         ]);
+        //$path = $request->file('image')->store('public');
+        //$path = str_replace('public', '/storage', $path);
 
-        $path = $request->file('image')->store('public');
-
-        $path = str_replace('public', '/storage', $path);
+        $image = addslashes($request->file('image'));
+        $image = file_get_contents($image);
+        $image = base64_encode($image);
 
         $product = new Product();
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
-        $product->image = $path;
+        $product->image = $image;
         $product->category = request('category');
         $product->save();
 
