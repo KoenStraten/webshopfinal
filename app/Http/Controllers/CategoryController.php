@@ -106,8 +106,6 @@ class CategoryController extends Controller
             'image' => 'required|max:1024',
         ]);
 
-        dd($request->file('image'));
-
         $smallImage = $this->compress($request->file('image'));
 
         $image = addslashes($smallImage);
