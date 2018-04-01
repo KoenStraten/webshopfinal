@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-@section('title', $product)
+@section('title', $product->name)
 {{ Breadcrumbs::render('product', $product) }}
 
 <div class="container">
