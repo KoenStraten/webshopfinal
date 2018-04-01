@@ -16,7 +16,7 @@ class RegistrationController extends Controller
     }
 
     public function store() {
-        // Validate information
+        // Validate information, regex is validation on zipcode 1111AA
         $this->validate(request(), [
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',

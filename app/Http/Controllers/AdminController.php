@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class AdminController extends Controller
 
     public function index() {
         $userAmount = User::count();
-        $orderAmount = 0;
+        $orderAmount = ShoppingCart::getAllOrders()->count();
         $productAmount = Product::count();
         $categoryAmount = Category::count();
 
