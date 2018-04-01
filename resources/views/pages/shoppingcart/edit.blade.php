@@ -4,12 +4,12 @@
     {{ Breadcrumbs::render('shoppingCart') }}
 
     <div class="container">
-        <h3 class="pt-3">{{ $productInCart->name }}</h3>
+        <h3 class="pt-3">Product bewerken</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <div class="row">
                 <div class="col-md-4">
                     <a href="../product/{{ $productInCart->product->id }}">
-                        <img src="{{ $productInCart->product->image }}" class="img-fluid">
+                        <img alt="img" src="{{ $productInCart->product->image }}" class="img-fluid">
                     </a>
                 </div>
                 <div class="col-md-6">
