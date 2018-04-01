@@ -28,6 +28,11 @@ class HomeController extends Controller
     {
         //$products = Product::orderBy('times_sold', 'desc')->limit(5)->get();
         $products = Product::orderByPopularity()->limit(5)->get();
+        foreach($products as $product) {
+            if (substr($product->image, 0, 4) != 'http') {
+                $product->image = "data:image;base64," . $product->image;
+            }
+        }
         $populairProduct = $products->first();
 
         return view('welcome', compact('products', 'populairProduct'));
@@ -36,7 +41,9 @@ class HomeController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $product->image = "data:image;base64," . $product->image;
+        if (substr($product->image, 0, 4) != 'http') {
+            $product->image = "data:image;base64," . $product->image;
+        }
         $cheeseTypes = DB::table('cheese_types')->get();
 
         return view('pages.product', compact('product', 'cheeseTypes'));

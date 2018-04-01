@@ -17,12 +17,24 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
+        foreach($categories as $category) {
+            if (substr($category->image, 0, 4) != 'http') {
+                $category->image = "data:image;base64," . $category->image;
+            }
+        }
+
         return view('pages.categoryoverview', compact( 'categories'));
     }
 
     public function show($category)
     {
         $products = Product::getAllProductsByCategory($category)->paginate(10);
+
+        foreach($products as $product) {
+            if (substr($product->image, 0, 4) != 'http') {
+                $product->image = "data:image;base64," . $product->image;
+            }
+        }
 
         return view('pages.category', compact('products', 'category'));
     }
