@@ -4,7 +4,7 @@
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
+            <main class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <h3>{{ $product->name }}</h3>
 
                 <form method="POST" action="/../admin/orders/update/{{ $order->id }}/{{ $productInCart->id }}">

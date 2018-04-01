@@ -4,7 +4,7 @@
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
+            <main class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Order aanmaken</h1>
                 </div>
@@ -23,7 +23,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label>Gebruiker</label>
-                        <select class="form-control" name="user" required>
+                        <select class="form-control" name="user">
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
@@ -52,6 +52,7 @@
                                 <th>Product</th>
                                 <th>Kaassoort</th>
                                 <th>Aantal</th>
+                                <th></th>
                             </tr>
                             <tr>
                                 <td>
