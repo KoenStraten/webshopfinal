@@ -22,7 +22,7 @@ class RegistrationController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:5|confirmed',
             'city' => 'required|string|max:255',
-            'zipcode' => 'required|string|min:6|max:6',
+            'zipcode' => 'required|string|min:6|max:6|regex:~\A[1-9]\d{3} ?[a-zA-Z]{2}\z~',
             'housenumber' => 'required|int',
             'streetname' => 'required|string|max:255',
         ]);

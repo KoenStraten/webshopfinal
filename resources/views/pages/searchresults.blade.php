@@ -1,5 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
+    @php $search = "zoek '" . $query . "'"; @endphp
+    {{ Breadcrumbs::render('search', $search) }}
     <div class="container">
         <h3 class="pt-3">Zoekresultaten</h3>
         <p>Je hebt gezocht op '{{ $query }}'</p>

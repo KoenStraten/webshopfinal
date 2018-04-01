@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-    {{--{{ Breadcrumbs::render('category', $category) }}--}}
+    {{ Breadcrumbs::render('purchaseHistory') }}
 
     <div class="container">
         <h3 class="pt-3">Aankoopgeschiedenis</h3>

@@ -5,6 +5,24 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('Home', route('home'));
 });
 
+// Home > [Search]
+Breadcrumbs::register('search', function($breadcrumbs, $search) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($search, route('search', $search));
+});
+
+// Home > purchasehistory
+Breadcrumbs::register('purchaseHistory', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Aankoopgeschiedenis', route('purchaseHistory'));
+});
+
+// Home > account
+Breadcrumbs::register('account', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Mijn account', route('account'));
+});
+
 // Home > About
 Breadcrumbs::register('about', function ($breadcrumbs) {
     $breadcrumbs->parent('home');

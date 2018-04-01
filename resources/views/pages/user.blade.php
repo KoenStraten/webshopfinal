@@ -1,5 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
+    {{ Breadcrumbs::render('account') }}
 
     <div class="container">
         <h3 class="pt-3">Mijn account</h3>
@@ -13,7 +14,7 @@
                         <h5>Naam:</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="name" value="{{ $user->name }}"/>
+                        <input class="form-control" name="name" value="{{ $user->name }}"/>
                     </div>
                 </div>
                 <div class="row pb-4">
@@ -21,7 +22,7 @@
                         <h5>Email:</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="email" value="{{ $user->email }}"/>
+                        <input class="form-control" name="email" value="{{ $user->email }}"/>
                     </div>
                 </div>
 
@@ -31,7 +32,7 @@
                         <h5>Postcode</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="zipcode" value="{{ $user->adress->zipcode }}"/>
+                        <input class="form-control" name="zipcode" value="{{ $user->adress->zipcode }}"/>
                     </div>
                 </div>
                 <div class="row pb-4">
@@ -39,7 +40,7 @@
                         <h5>Straatnaam</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="streetname" value="{{ $user->adress->streetname }}"/>
+                        <input class="form-control" name="streetname" value="{{ $user->adress->streetname }}"/>
                     </div>
                 </div>
                 <div class="row pb-4">
@@ -47,7 +48,7 @@
                         <h5>Huisnummer</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="housenumber" value="{{ $user->adress->housenumber }}"/>
+                        <input class="form-control" name="housenumber" value="{{ $user->adress->housenumber }}"/>
                     </div>
                 </div>
                 <div class="row pb-4">
@@ -55,7 +56,7 @@
                         <h5>Stad</h5>
                     </div>
                     <div class="col-md-4">
-                        <input name="city" value="{{ $user->adress->city }}"/>
+                        <input class="form-control" name="city" value="{{ $user->adress->city }}"/>
                     </div>
                 </div>
                 <input type="hidden" name="user" value="{{ $user->id }}">
