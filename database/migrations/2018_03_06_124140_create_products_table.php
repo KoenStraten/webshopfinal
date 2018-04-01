@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->text('description');
-            $table->binary('image');
+//            $table->binary('image');
             $table->string('category');
             $table->timestamps();
         });
@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('category')->references('category')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        DB::statement("ALTER TABLE products ADD image MEDIUMBLOB");
     }
 
     /**

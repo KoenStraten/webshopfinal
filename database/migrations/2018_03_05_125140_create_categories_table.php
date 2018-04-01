@@ -16,10 +16,11 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->primary('category');
             $table->string('category');
-            $table->binary('image')->nullable();
+//            $table->binary('image')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE categories ADD image MEDIUMBLOB");
     }
 
     /**

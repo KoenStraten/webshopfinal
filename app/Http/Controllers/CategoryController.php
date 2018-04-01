@@ -81,7 +81,6 @@ class CategoryController extends Controller
 
         if ($info['mime'] == 'image/jpeg')
             $image = imagecreatefromjpeg($source);
-
         elseif ($info['mime'] == 'image/gif')
             $image = imagecreatefromgif($source);
 
@@ -98,7 +97,7 @@ class CategoryController extends Controller
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
-            'image' => 'required|max:65000|mimes:jpg,png,gif'
+            'image' => 'required|max:1024|mimes:jpeg,png,gif',
         ]);
 
         $destination_img = 'newimage.jpg';
