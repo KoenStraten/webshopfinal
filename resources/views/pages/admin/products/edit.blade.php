@@ -38,7 +38,7 @@
                     <img class="w-25 mb-3" src="{{ $product->image }}" alt="product image">
                     <div class="form-group">
                         <label>Afbeelding</label>
-                        <input type="file" name="image">
+                        <input type="file" name="image" accept="image/*">
                     </div>
 
                     <div class="form-group">

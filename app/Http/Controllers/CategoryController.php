@@ -65,10 +65,18 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
             'category' => 'required|min:2',
+            'description' => 'required',
+            'image' => 'required|max:1024'
         ]);
 
         $category = Category::find(request('category_old'));
         $category->category = request('category');
+        $category->description = request('description');
+        $oldImage = $category->image();
+        if ($oldImage != request('image')) {
+            $category->image = request('image');
+        }
+
         $category->save();
 
         return redirect('/admin/categories');
@@ -98,7 +106,7 @@ class CategoryController extends Controller
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
-            'image' => 'required|max:64'
+            'image' => 'required|max:1024'
         ]);
 
         $destination_img = 'newimage.jpg';
