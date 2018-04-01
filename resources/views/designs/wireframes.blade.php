@@ -2,7 +2,7 @@
 @section ('content')
     {{--    {{ Breadcrumbs::render('wireframes') }}--}}
 
-    <div class="container text-center">
+    <div class="container">
         <h3 class="pt-3">Wireframes</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow justify-content-center">
             <h4 class="pt-3">Home ingelogd</h4>
