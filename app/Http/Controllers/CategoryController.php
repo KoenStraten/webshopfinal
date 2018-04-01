@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\Compress;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 
 class CategoryController extends Controller
 {
-    use Compress;
 
     public function __construct()
     {
@@ -75,15 +73,9 @@ class CategoryController extends Controller
         $category = Category::find(request('category_old'));
         $category->category = request('category');
         $category->description = request('description');
-//        $oldImage = $category->image;
-//        dd($oldImage, request('image'));
-//
-//        if ($oldImage != request('image')) {
 
         if ($request->file('image')) {
-            $smallImage = $this->compress($request->file('image'));
-
-            $image = addslashes($smallImage);
+            $image = addslashes($request->file('image'));
             $image = file_get_contents($image);
             $image = base64_encode($image);
         }
@@ -91,7 +83,6 @@ class CategoryController extends Controller
         if (isset($image)) {
             $category->image = $image;
         }
-//        }
 
         $category->save();
 
@@ -106,11 +97,7 @@ class CategoryController extends Controller
             'image' => 'required|max:1024',
         ]);
 
-        dd($request->file('image'));
-
-        $smallImage = $this->compress($request->file('image'));
-
-        $image = addslashes($smallImage);
+        $image = addslashes($request->file('image'));
         $image = file_get_contents($image);
         $image = base64_encode($image);
 
