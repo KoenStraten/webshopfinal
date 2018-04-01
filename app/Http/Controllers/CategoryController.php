@@ -74,7 +74,7 @@ class CategoryController extends Controller
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
-            'image' => 'required|max:65000|mimes:jpg,png,gif'
+            'image' => 'required|max:64000|mimes:jpg,png,gif'
         ]);
 
         $image = addslashes($request->file('image'));
