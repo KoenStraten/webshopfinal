@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Gebruiker aanpassen')
+@section ('content')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
@@ -51,17 +51,20 @@
 
                     <div class="form-group">
                         <label>Postcode</label>
-                        <input class="form-control" name="zipcode" type="text" value="{{ $user->adress->zipcode }}" required>
+                        <input class="form-control" name="zipcode" type="text" value="{{ $user->adress->zipcode }}"
+                               required>
                     </div>
 
                     <div class="form-group">
                         <label>Huisnummer</label>
-                        <input class="form-control" name="housenumber" type="number" value="{{ $user->adress->housenumber }}" required>
+                        <input class="form-control" name="housenumber" type="number"
+                               value="{{ $user->adress->housenumber }}" required>
                     </div>
 
                     <div class="form-group">
                         <label>Straatnaam</label>
-                        <input class="form-control" name="streetname" type="text" value="{{ $user->adress->streetname }}" required>
+                        <input class="form-control" name="streetname" type="text"
+                               value="{{ $user->adress->streetname }}" required>
                     </div>
 
                     <input type="hidden" name="address_id" value="{{ $user->adress->id }}">

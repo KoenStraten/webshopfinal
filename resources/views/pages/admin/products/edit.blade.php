@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Product aanpassen')
+@section ('content')
     <div class="container-fluid bg-white">
         <div class="row">
             @include('layouts.sidenav')
@@ -27,12 +27,14 @@
 
                     <div class="form-group">
                         <label>Prijs</label>
-                        <input class="form-control" name="price" type="number" step="0.01" value="{{ $product->price }}" required>
+                        <input class="form-control" name="price" type="number" step="0.01" value="{{ $product->price }}"
+                               required>
                     </div>
 
                     <div class="form-group">
                         <label>Beschrijving</label>
-                        <textarea class="form-control" name="description" required>{{ $product->description }}</textarea>
+                        <textarea class="form-control" name="description"
+                                  required>{{ $product->description }}</textarea>
                     </div>
 
                     <img class="w-25 mb-3" src="{{ $product->image }}" alt="product image">
@@ -46,7 +48,8 @@
                         <select class="form-control" name="category">
                             @foreach($categories as $category)
                                 @if ($product->category == $category->category)
-                                    <option value="{{ $category->category }}" selected="selected">{{ $category->category }}</option>
+                                    <option value="{{ $category->category }}"
+                                            selected="selected">{{ $category->category }}</option>
                                 @else
                                     <option value="{{ $category->category }}">{{ $category->category }}</option>
                                 @endif

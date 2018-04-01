@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Zoek')
+@section ('content')
     @php $search = "zoek '" . $query . "'"; @endphp
     {{ Breadcrumbs::render('search', $search) }}
     <div class="container">

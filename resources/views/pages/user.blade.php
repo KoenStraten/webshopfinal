@@ -1,6 +1,6 @@
 @extends ('layouts.master')
-@section ('content')
 @section('title', 'Mijn account')
+@section ('content')
     {{ Breadcrumbs::render('account') }}
 
     <div class="container">
