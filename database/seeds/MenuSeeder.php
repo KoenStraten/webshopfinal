@@ -104,7 +104,7 @@ class MenuSeeder extends Seeder
         DB::table('menu')->insert([
             'id' => 9,
             'label' => 'Aankoopgeschiedenis',
-            'link' => '#',
+            'link' => '/../shoppingcart/index',
             'icon' => null,
             'parent_id' => 4,
             'order' => 4,

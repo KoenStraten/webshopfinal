@@ -88,8 +88,7 @@ class UserController extends Controller
         if ($changes) {
             session()->flash('message', 'De wijzigingen zijn opgeslagen.');
         }
-
-        return back();
+        return $this->user();
     }
 
     public function create()

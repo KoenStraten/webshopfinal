@@ -35,8 +35,12 @@ class ReviewController extends Controller
         return redirect('/product/' . $product_id);
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         Review::find($id)->delete();
-        return back();
+
+        $product_id = request('product_id');
+
+        return redirect('/product/' . $product_id);
     }
 }

@@ -19,7 +19,7 @@ class ShoppingCartController extends Controller
     {
         // Aankoopgeschiedenis
         $id = auth()->id();
-        $products =Product::selectRaw(DB::raw('products.*, shopping_carts.updated_at as "datePaid"'))
+        $products = Product::selectRaw(DB::raw('products.*, shopping_carts.updated_at as "datePaid"'))
             ->join('product_in_shopping_cart', 'product_in_shopping_cart.product_id', '=', 'products.id')
             ->join('shopping_carts', 'shopping_carts.id', '=', 'product_in_shopping_cart.shopping_cart_id')
             ->where('user_id', $id)->where('paid', 1)->orderBy('shopping_carts.updated_at', 'desc')->get();
@@ -171,7 +171,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'Het product is verwijderd uit je winkelmandje.');
 
-        return back();
+        return $this->show();
     }
 
 
@@ -198,7 +198,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
 
-        return back();
+        return $this->show();
     }
 
     public function purchase()

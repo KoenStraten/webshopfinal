@@ -113,7 +113,6 @@ class OrderController extends Controller
         $productInCart->save();
 
         return $this->edit($order_id);
-//        return view('pages/admin/orders', compact('order_id', 'user', 'product'));
     }
 
     public function removeProduct($order_id, $productInCart_id)
@@ -130,7 +129,7 @@ class OrderController extends Controller
 
         $cart->save();
 
-        return back();
+        return redirect('/../admin/orders/edit/' . $order_id);
     }
 
     public function store()
