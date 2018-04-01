@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function store()
     {
         $this->validate(request(), [
@@ -28,5 +33,10 @@ class ReviewController extends Controller
         $review->save();
 
         return redirect('/product/' . $product_id);
+    }
+
+    public function destroy($id) {
+        Review::find($id)->delete();
+        return back();
     }
 }
