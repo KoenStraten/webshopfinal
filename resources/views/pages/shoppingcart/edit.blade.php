@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4">
                 <a href="../product/{{ $productInCart->product->id }}">
-                    <img alt="img" src="{{  "data:image;base64," . $productInCart->product->image }}" class="img-fluid">
+                    <img alt="img" src="{{ $productInCart->product->image }}" class="img-fluid">
                 </a>
             </div>
             <div class="col-md-6">
