@@ -22,7 +22,7 @@
     <link href="{{ asset('css/product.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <title>@yield('title') - Sinterkaasenzwartebrie</title>
+    <title>@yield('title') - Sinterkaas & Zwarte brie</title>
 </head>
 <body>
 
