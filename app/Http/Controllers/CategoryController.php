@@ -81,9 +81,9 @@ class CategoryController extends Controller
 //        if ($oldImage != request('image')) {
 
         if ($request->file('image')) {
-            $smallImage = $this->compress($request->file('image'));
+//            $smallImage = $this->compress($request->file('image'));
 
-            $image = addslashes($smallImage);
+            $image = addslashes($request->file('image'));
             $image = file_get_contents($image);
             $image = base64_encode($image);
         }
@@ -106,9 +106,9 @@ class CategoryController extends Controller
             'image' => 'required|max:1024',
         ]);
 
-        $smallImage = $this->compress($request->file('image'));
+//        $smallImage = $this->compress($request->file('image'));
 
-        $image = addslashes($smallImage);
+        $image = addslashes($request->file('image'));
         $image = file_get_contents($image);
         $image = base64_encode($image);
 
