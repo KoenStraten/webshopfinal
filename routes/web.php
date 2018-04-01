@@ -79,8 +79,9 @@ Route::post('/admin/categories/remove/{category}', 'CategoryController@remove');
 Route::get('/admin/orders', 'OrderController@index');
 Route::get('/admin/orders/create', 'OrderController@create');
 Route::get('/admin/orders/edit/{order}', 'OrderController@edit');
-Route::get('/admin/orders/edit/{order}/{product}', 'OrderController@updateProduct');
+Route::get('/admin/orders/edit/{order}/{product}', 'OrderController@editProduct');
 Route::get('/admin/orders/remove/{order}/{product}', 'OrderController@removeProduct');
+Route::post('/admin/orders/update/{order}/{product}', 'OrderController@updateProduct');
 Route::post('/admin/orders/update/{order}', 'OrderController@update');
 Route::post('/admin/orders/goback', 'OrderController@goBack');
 Route::post('/admin/orders/edit', 'OrderController@update');
@@ -99,3 +100,6 @@ Route::get('/database_eer', function () {
 })->name('dbEER');
 
 // Wireframes
+Route::get('/wireframes', function () {
+    return view('designs/wireframes');
+})->name('wireframes');

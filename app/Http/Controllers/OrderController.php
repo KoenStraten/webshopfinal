@@ -8,6 +8,7 @@ use App\ProductInCart;
 use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -91,21 +92,35 @@ class OrderController extends Controller
         return redirect('/admin/orders');
     }
 
-    public function updateProduct($order_id, $productInCart_id)
+    public function editProduct($order_id, $productInCart_id)
     {
+        // naar de indiv view voor productupdate
+
         $productInCart = ProductInCart::find($productInCart_id);
 
-        $cart = ShoppingCart::find($order_id);
+        $order = ShoppingCart::find($order_id);
 
         $product = Product::find($productInCart->product_id);
 
-        $cart->total_cost -= $product->price;
+        $cheeseTypes = DB::table('cheese_types')->get();
 
-        ProductInCart::find($productInCart_id)->delete();
+        $order->save();
 
-        $cart->save();
+        return view('pages/admin/orders/editProduct', compact('order', 'product', 'cheeseTypes', 'productInCart'));
+    }
 
-        return view('pages/admin/orders/edit', compact('order', 'user', 'productsInCart'));
+    public function updateProduct($order_id, $productInCart_id)
+    {
+        $cheeseType = request('cheeseType');
+
+        $productInCart = ProductInCart::find($productInCart_id);
+
+        $productInCart->cheese_type = $cheeseType;
+
+        $productInCart->save();
+
+        return $this->edit($order_id);
+//        return view('pages/admin/orders', compact('order_id', 'user', 'product'));
     }
 
     public function removeProduct($order_id, $productInCart_id)

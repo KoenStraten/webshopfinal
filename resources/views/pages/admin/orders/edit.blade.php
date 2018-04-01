@@ -75,7 +75,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" value="0" name="amount[]" min="1"
+                                    <input class="form-control" type="number" value="0" name="amount[]" min="0"
                                            required>
                                 </td>
                                 <td>
