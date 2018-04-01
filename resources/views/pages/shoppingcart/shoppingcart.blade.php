@@ -11,7 +11,11 @@
                     <div class="row productline">
                         <div class="col-md-4">
                             <a href="../product/{{ $productInCart->product->id }}">
-                                <img alt="kaas" src="{{ $productInCart->product->image }}" class="img-fluid">
+                                @if (substr($productInCart->product->image, 0, 4) != 'http')
+                                    <img alt="kaas" src="{{  "data:image;base64," . $productInCart->product->image }}" class="img-fluid">
+                                @else
+                                    <img alt="kaas" src="{{ $productInCart->product->image }}" class="img-fluid">
+                                @endif
                             </a>
                         </div>
                         <div class="col-md-6">

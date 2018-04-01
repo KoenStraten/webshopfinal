@@ -22,6 +22,12 @@ class ShoppingCartController extends Controller
             ->join('shopping_carts', 'shopping_carts.id', '=', 'product_in_shopping_cart.shopping_cart_id')
             ->where('user_id', $id)->where('paid', 1)->orderBy('shopping_carts.updated_at', 'desc')->get();
 
+        foreach($products as $product) {
+            if (substr($product->image, 0, 4) != 'http') {
+                $product->image = "data:image;base64," . $product->image;
+            }
+        }
+
         return view('pages.purchaseHistory', compact('products'));
     }
 
