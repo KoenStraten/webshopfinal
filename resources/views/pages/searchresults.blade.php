@@ -16,7 +16,7 @@
                                     @endif
                                     <div class="col-md-4">
                                         <a href="../product/{{ $product->id }}">
-                                            <img class="h-200px" src="{{ $product->image }}">
+                                            <img class="h-200px" src="{{ $product->image }}" alt="product image">
                                         </a>
                                     </div>
                                     <div class="col-md-6">
