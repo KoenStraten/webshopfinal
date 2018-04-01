@@ -37,7 +37,7 @@
                                 <h5 class="col-md-3">{{ $user->adress->zipcode }}</h5>
                                 <h5 class="col-md-3 text-right">Betaalwijze</h5>
                                 <h5 class="col-md-3">
-                                    <select name="payment">
+                                    <select class="form-control" name="payment">
                                         @foreach($paymentOptions as $payment)
                                             <option value="{{ $payment }}">{{ $payment }}</option>
                                         @endforeach
