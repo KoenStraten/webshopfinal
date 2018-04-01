@@ -29,6 +29,10 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $product = Product::find($id);
+        if (substr($product->image, 0, 4) != 'http') {
+            $product->image = "data:image;base64," . $product->image;
+        }
+
         return view('pages/admin/products/edit', compact('categories', 'product'));
     }
 
@@ -41,19 +45,19 @@ class ProductController extends Controller
             'category' => 'required',
         ]);
 
-        if ($request->file('image')) {/*
-            $path = $request->file('image')->store('public');
-            $path = str_replace('public', '/storage', $path);*/
-
+        if ($request->file('image')) {
+            $image = addslashes($request->file('image'));
+            $image = file_get_contents($image);
+            $image = base64_encode($image);
         }
 
         $product = Product::find(request('id'));
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
-        /*if (isset($path)) {
-            $product->image = $path;
-        }*/
+        if (isset($image)) {
+            $product->image = $image;
+        }
         $product->category = request('category');
         $product->save();
 
@@ -69,8 +73,6 @@ class ProductController extends Controller
             'category' => 'required',
             'image' => 'required',
         ]);
-        //$path = $request->file('image')->store('public');
-        //$path = str_replace('public', '/storage', $path);
 
         $image = addslashes($request->file('image'));
         $image = file_get_contents($image);

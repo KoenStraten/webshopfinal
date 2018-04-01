@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$products = Product::orderBy('times_sold', 'desc')->limit(5)->get();
         $products = Product::orderByPopularity()->limit(5)->get();
         foreach($products as $product) {
             if (substr($product->image, 0, 4) != 'http') {

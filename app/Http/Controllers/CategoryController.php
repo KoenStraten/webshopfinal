@@ -51,6 +51,10 @@ class CategoryController extends Controller
 
     public function edit($category) {
         $category = Category::find($category);
+        if (substr($category->image, 0, 4) != 'http') {
+            $category->image = "data:image;base64," . $category->image;
+        }
+
         return view('pages/admin/categories/edit', compact('category'));
     }
 
@@ -73,13 +77,13 @@ class CategoryController extends Controller
             'image' => 'required'
         ]);
 
-        $path = $request->file('image')->store('public');
-
-        $path = str_replace('public', '/storage', $path);
+        $image = addslashes($request->file('image'));
+        $image = file_get_contents($image);
+        $image = base64_encode($image);
 
         $category = new Category();
         $category->category = request('category');
-        $category->image = $path;
+        $category->image = $image;
         $category->description = request('description');
         $category->save();
 
