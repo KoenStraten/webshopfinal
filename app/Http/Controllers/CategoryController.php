@@ -17,20 +17,20 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        foreach($categories as $category) {
+        foreach ($categories as $category) {
             if (substr($category->image, 0, 4) != 'http') {
                 $category->image = "data:image;base64," . $category->image;
             }
         }
 
-        return view('pages.categoryoverview', compact( 'categories'));
+        return view('pages.categoryoverview', compact('categories'));
     }
 
     public function show($category)
     {
         $products = Product::getAllProductsByCategory($category)->paginate(10);
 
-        foreach($products as $product) {
+        foreach ($products as $product) {
             if (substr($product->image, 0, 4) != 'http') {
                 $product->image = "data:image;base64," . $product->image;
             }
@@ -39,17 +39,20 @@ class CategoryController extends Controller
         return view('pages.category', compact('products', 'category'));
     }
 
-    public function categoryIndex() {
+    public function categoryIndex()
+    {
         $categories = Category::all();
 
         return view('pages.admin.categories.index', compact('categories'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('pages/admin/categories/create');
     }
 
-    public function edit($category) {
+    public function edit($category)
+    {
         $category = Category::find($category);
         if (substr($category->image, 0, 4) != 'http') {
             $category->image = "data:image;base64," . $category->image;
@@ -58,11 +61,12 @@ class CategoryController extends Controller
         return view('pages/admin/categories/edit', compact('category'));
     }
 
-    public function update() {
+    public function update()
+    {
         $this->validate(request(), [
             'category' => 'required|min:2',
         ]);
-        
+
         $category = Category::find(request('category_old'));
         $category->category = request('category');
         $category->save();
@@ -70,14 +74,38 @@ class CategoryController extends Controller
         return redirect('/admin/categories');
     }
 
-    public function store(Request $request) {
+    public function compress($source, $destination, $quality)
+    {
+
+        $info = getimagesize($source);
+
+        if ($info['mime'] == 'image/jpeg')
+            $image = imagecreatefromjpeg($source);
+
+        elseif ($info['mime'] == 'image/gif')
+            $image = imagecreatefromgif($source);
+
+        elseif ($info['mime'] == 'image/png')
+            $image = imagecreatefrompng($source);
+
+        imagejpeg($image, $destination, $quality);
+
+        return $destination;
+    }
+
+    public function store(Request $request)
+    {
         $this->validate(request(), [
             'category' => 'required|min:2',
             'description' => 'required',
             'image' => 'required'
         ]);
 
-        $image = addslashes($request->file('image'));
+        $destination_img = 'newimage.jpg';
+
+        $smallImage = $this->compress($request->file('image'), $destination_img, 30);
+
+        $image = addslashes($smallImage);
         $image = file_get_contents($image);
         $image = base64_encode($image);
 
@@ -89,7 +117,9 @@ class CategoryController extends Controller
 
         return redirect('/../admin/categories');
     }
-    public function remove($category) {
+
+    public function remove($category)
+    {
         Category::find($category)->delete();
         return redirect('/../admin/categories');
     }
